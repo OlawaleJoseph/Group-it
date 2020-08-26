@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
   before_action :require_user
 
   def index
-    @groups = current_user.groups.order('name ASC')
+    @groups = current_user.groups.asc
   end
 
   def new
