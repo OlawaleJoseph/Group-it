@@ -17,7 +17,7 @@ class GroupsController < ApplicationController
       flash[:success] = "#{@group.name} Group was created successfully"
       redirect_to @group
     else
-      flash[:error] = @user.errors.full_messages
+      flash[:error] = @group.errors.full_messages
       render :new
     end
   end
