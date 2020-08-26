@@ -7,9 +7,9 @@ class GroupsController < ApplicationController
     @groups = current_user.groups.order('name ASC')
   end
 
-  # def new
-  #   @group = Group.new
-  # end
+  def new
+    @group = Group.new
+  end
 
   # def create
   #   @group = current_user.groups.build(group_params)
