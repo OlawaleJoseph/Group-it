@@ -11,16 +11,16 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
 
-  # def create
-  #   @group = current_user.groups.build(group_params)
-  #   if @group.save
-  #     flash[:success] = 'Group was created successfully'
-  #     redirect_to @group
-  #   else
-  #     flash.now[:danger] = 'Group was not created'
-  #     render 'new'
-  #   end
-  # end
+  def create
+    @group = current_user.groups.build(group_params)
+    if @group.save
+      flash[:success] = "#{@group.name} Group was created successfully"
+      redirect_to @group
+    else
+      flash[:error] = @user.errors.full_messages
+      render :new
+    end
+  end
 
   def show
     if current_user.groups.include? @group
