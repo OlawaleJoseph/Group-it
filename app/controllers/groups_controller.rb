@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
   before_action :require_user
 
   def index
-    @groups = current_user.groups.asc
+    @groups = current_user.groups.asc unless current_user.groups.size.zero?
   end
 
   def new
