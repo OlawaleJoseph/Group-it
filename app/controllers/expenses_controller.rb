@@ -4,12 +4,13 @@ class ExpensesController < ApplicationController
   
     def index
     #   @expenses = current_user.expenses.desc.select { |expense| expense.groups.exists? }
-      @expenses = @current_user.expenses
+      @expenses = current_user.expenses.select { |expense| expense.groups.exists? }
     end
   
-    # def external
+    def external
     #   @expenses = current_user.expenses.desc.reject { |expense| expense.groups.exists? }
-    # end
+      @expenses = current_user.expenses.reject { |expense| expense.groups.exists? }
+    end
   
     # def show; end
   
