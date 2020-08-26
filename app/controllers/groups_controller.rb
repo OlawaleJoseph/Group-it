@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
     # before_action :set_group, only: %i[show edit update destroy]
+    before_action :set_group, only: %i[show]
     before_action :require_user
   
     def index
@@ -21,15 +22,15 @@ class GroupsController < ApplicationController
     #   end
     # end
   
-    # def show
-    #   if current_user.groups.include? set_group
-    #     @group = set_group
-    #     @expenses = set_group.expenses
-    #     @expense_user = true
-    #   else
-    #     flash[:danger] = 'You are not allowed to view other users groups'
-    #   end
-    # end
+    def show
+        if current_user.groups.include? @group
+            @expenses = nil
+            @expenses = @group.expenses if @group.expenses.exists?
+        else
+            flash[:danger] = 'You are not allowed to view other users groups'
+            redirect_to groups_path
+        end
+    end
   
     # def edit; end
   
@@ -45,9 +46,9 @@ class GroupsController < ApplicationController
   
     # private
   
-    # def set_group
-    #   @group = Group.find(params[:id])
-    # end
+    def set_group
+      @group = Group.find(params[:id])
+    end
   
     # def group_params
     #   params.require(:group).permit(:name)
