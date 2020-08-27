@@ -3,7 +3,7 @@
 <h1 class="text-center">Create An Expense</h1>
 
 <div class="sign_form bg-custom-light rounded  p-2 py-5">
-    <% if @groups.size.zero?%>
+    <% if @groups.nil?%>
         <%= link_to 'Create Group', new_group_path %>
     <% end %>
     <div class="row">
@@ -18,7 +18,7 @@
                     <%= form.label :amount %>
                     <%= form.number_field :amount, placeholder: "Price", id: "amount", class: "form-control" %><br>
                 </div>
-                <% unless @groups.size.zero? %>
+                <% unless @groups.nil? %>
                     <div class="form-group">
                         <%= form.select :group_id, options_from_collection_for_select(@groups, :id, :name), {:include_blank => 'Choose a group'}, {class: "form-control"} %>
                     </div>
