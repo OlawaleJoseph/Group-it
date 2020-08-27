@@ -3,13 +3,11 @@ class ExpensesController < ApplicationController
   before_action :require_user
 
   def index
-    #   @expenses = current_user.expenses.desc.select { |expense| expense.groups.exists? }
-    @expenses = current_user.expenses.select { |expense| expense.groups.exists? }
+    @expenses = current_user.expenses.desc.select { |expense| expense.groups.exists? } unless current_user.expenses.size.zero?
   end
 
   def external
-    #   @expenses = current_user.expenses.desc.reject { |expense| expense.groups.exists? }
-    @expenses = current_user.expenses.reject { |expense| expense.groups.exists? }
+    @expenses = current_user.expenses.desc.reject { |expense| expense.groups.exists? } unless current_user.expenses.size.zero?
   end
 
   # def show; end
