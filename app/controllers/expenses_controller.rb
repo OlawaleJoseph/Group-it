@@ -19,19 +19,19 @@ class ExpensesController < ApplicationController
 
   # def edit; end
 
-  # def create
-  #   @expense = current_user.expenses.build(expense_params)
-  #   @group = Group.find_by(id: group_params[:group_id])
-  #   @expense.groups << @group unless @group.nil?
+  def create
+    @expense = current_user.expenses.build(expense_params)
+    @group = Group.find_by(id: group_params[:group_id])
+    @expense.groups << @group unless @group.nil?
 
-  #   if @expense.save
-  #     flash[:success] = 'Expense created successfully!'
-  #     redirect_to expenses_path
-  #   else
-  #     flash.now[:danger] = 'Expense wasn`t created'
-  #     render :new
-  #   end
-  # end
+    if @expense.save
+      flash[:success] = 'Expense created successfully!'
+      redirect_to expenses_path
+    else
+      flash.now[:error] = @expense.errors.full_messages
+      render :new
+    end
+  end
 
   # def update
   #   if @expense.update(expense_params)
@@ -47,16 +47,18 @@ class ExpensesController < ApplicationController
   #   @expense.destroy
   #   redirect_to expenses_path
   # end
+  private
 
   # def set_expense
   #   @expense = Expense.find(params[:id])
   # end
 
-  # def expense_params
-  #   params.require(:expense).permit(:name, :amount)
-  # end
+  def expense_params
+    params.require(:expense).permit(:name, :amount)
+  end
 
-  # def group_params
-  #   params.require(:expense).permit(:group_id)
-  # end
+  def group_params
+    params.require(:expense).permit(:group_id)
+  end
+
 end
