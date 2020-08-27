@@ -12,15 +12,10 @@ class ExpensesController < ApplicationController
 
   # def show; end
 
-  # def new
-  #   @expense = Expense.new
-  #   @groups = current_user.groups
-  #   @message = if @groups.size.zero?
-  #                'If you want to choose a group for your expense, you should create a group before adding it.'
-  #              else
-  #                'Choose a group for your expense.'
-  #              end
-  # end
+  def new
+    @expense = Expense.new
+    @groups = current_user.groups
+  end
 
   # def edit; end
 
