@@ -1,32 +1,25 @@
 <%if @expenses%>
-  <div class=" m-0 p-3 bg-white d-flex justify-content-between h4"><span class="text-secondary">Total amount:</span> <span class="font-weight-bold"> <%= @expenses.sum{|expense| expense.amount} %> &#36; </span></div>
-
-  <div class=" m-0 p-3  bg-light-gray">
+  <div class="row">
+    <div class="col-sm-12 transcation-total">
+      <span>Total amount:</span> 
+      <span>&#36;<%= @expenses.sum{|expense| expense.amount} %></span>
+    </div>
     <% @expenses.each do |expense| %>
-      <div class="my-2 bg-white p-3 d-flex justify-content-start">
-      <% group=current_user.groups.select{|l| expense.groups.include?(l)}.first %>
-      
-        <div>
-          <p class="text-secondary h6 m-0 p-0 pt-2"><strong>Expense Name: </strong><%= expense.name %></p>
-          <% unless expense.author.nil? %>
-          <p class="text-secondary h6 m-0 p-0 pt-2 h6"><strong>User: </strong> <%= expense.author.username %></p>
-          <% end %>
-          <p class="text-secondary h6 m-0 p-0 pt-3"><strong>Added: </strong> <%= expense.created_at.day %>-<%= expense.created_at.month %>-<%= expense.created_at.year %></p>
+      <div class="col-sm-12 col-md-6">
+        <div class="row transcation-listing">
+          <div class="col-sm-2"><span>dfdfdfdf</span></div>
+          <div class="col-sm-7 grey-color">
+            <p><%= expense.name %></p>
+            <p><%= expense.created_at.day %>-<%= expense.created_at.month %>-<%= expense.created_at.year %> by <%= expense.author.username %></p>
+          </div>
+          <div class="col-sm-3 bold">&#36;<%= expense.amount %></div>
         </div>
-        <div class="ml-auto">
-          <p class="text-secondary h6 m-0 p-0 pt-2 font-weight-bold"><%= expense.amount %> &#36; </p>
-        </div>
-        
       </div>
     <% end %>
   </div>
-
 <% else %>
-
-    <p>woohps you seem not to have any expenses</p>
-
+  <p class="transcation-listing">woohps you seem not to have any expenses</p>
 <% end %>
-
-<div class="w-100 p-2 bg-success-custom m-0" >
-    <%= link_to 'ADD NEW EXPENSE', new_expense_path, :class=>"d-block w-100 bg-success-custom text-white border-custom p-2 text-center" %>
-</div
+<div class="row add-btn-background">
+    <%= link_to 'ADD NEW EXPENSE', new_expense_path, :class=>"col-sm-12 text-center add-btn" %>
+</div>
