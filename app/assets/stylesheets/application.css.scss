@@ -13,3 +13,45 @@
  *= require_tree .
  *= require_self
  */
+ $base-color: #a8a8a8;
+ $base-color2: #5fbf23;
+ 
+ body{
+     background-color: #f1f3f2;
+ }
+ 
+ .transcation-total{
+     display: flex;
+     justify-content: space-between;
+     background-color: #fff;
+     padding: 1.5rem;
+     span:first-child{
+         color: $base-color;
+     }
+     span:last-child{
+        font-weight: bold;
+    }
+ }
+
+.transcation-listing{
+    background-color: #fff;
+    margin: 1.5rem 0.2rem;
+ }
+
+ .grey-color{
+    color: $base-color;
+ }
+ .bold{
+    font-weight: bold;
+ }
+
+ .add-btn-background{
+     background-color: $base-color2;
+     padding: 1.5rem;
+ }
+ .add-btn{
+     border: 1px solid white;
+     padding: 1.5rem;
+     color: white;
+     text-decoration: none;
+ }
