@@ -1,25 +1,18 @@
-<%if @expenses%>
-  <div class="row">
-    <div class="col-sm-12 transcation-total">
-      <span>Total amount:</span> 
-      <span>&#36;<%= @expenses.sum{|expense| expense.amount} %></span>
-    </div>
-    <% @expenses.each do |expense| %>
-      <div class="col-sm-12 col-md-6">
-        <div class="row transcation-listing">
-          <div class="col-sm-2"><span>dfdfdfdf</span></div>
-          <div class="col-sm-7 grey-color">
-            <p><%= expense.name %></p>
-            <p><%= expense.created_at.day %>-<%= expense.created_at.month %>-<%= expense.created_at.year %> by <%= expense.author.username %></p>
-          </div>
-          <div class="col-sm-3 bold">&#36;<%= expense.amount %></div>
-        </div>
-      </div>
-    <% end %>
+<div class="row">
+  <div class="col-sm-12 transcation-total">
+    <span>Total amount:</span> 
+    <span>&#36;<%= @expenses.sum{|expense| expense.amount} %></span>
   </div>
-<% else %>
-  <p class="transcation-listing">woohps you seem not to have any expenses</p>
-<% end %>
-<div class="row add-btn-background">
-    <%= link_to 'ADD NEW EXPENSE', new_expense_path, :class=>"col-sm-12 text-center add-btn" %>
+  <% @expenses.each do |expense| %>
+    <div class="col-sm-12 col-md-6">
+      <div class="row transcation-listing">
+        <div class="col-sm-2"><span>dfdfdfdf</span></div>
+        <div class="col-sm-7 grey-color">
+          <p><%= expense.name %></p>
+          <p><%= expense.created_at.day %>-<%= expense.created_at.month %>-<%= expense.created_at.year %> by <%= expense.author.username %></p>
+        </div>
+        <div class="col-sm-3 bold">&#36;<%= expense.amount %></div>
+      </div>
+    </div>
+  <% end %>
 </div>
