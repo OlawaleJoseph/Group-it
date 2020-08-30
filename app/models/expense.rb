@@ -6,5 +6,5 @@ class Expense < ApplicationRecord
   validates :name, presence: true, length: { minimum: 3, maximun: 25 }
   validates_numericality_of :amount, greater_than: 0, allow_nil: true
 
-  scope :desc, -> { order('created_at DESC') }
+  scope :desc, -> { includes(:author).order('created_at DESC') }
 end
