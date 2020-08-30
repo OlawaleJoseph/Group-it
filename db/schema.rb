@@ -56,10 +56,6 @@ ActiveRecord::Schema.define(version: 2020_08_30_214906) do
     t.integer "author_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.bigint "image_file_size"
-    t.datetime "image_updated_at"
   end
 
   create_table "users", force: :cascade do |t|
