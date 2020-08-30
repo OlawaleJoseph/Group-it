@@ -25,7 +25,7 @@ class GroupsController < ApplicationController
   def show
     if current_user.groups.include? @group
       @expenses = nil
-      @expenses = @group.expenses if @group.expenses.exists?
+      @expenses = @group.expenses.desc if @group.expenses.exists?
     else
       flash[:danger] = 'You are not allowed to view other users groups'
       redirect_to groups_path
