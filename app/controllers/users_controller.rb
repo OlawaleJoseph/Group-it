@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to Group-It #{@user.username}"
       redirect_to root_path
     else
-      flash[:error] = @user.errors.full_messages
+      flash.now[:error] = @user.errors.full_messages
       render :new
     end
   end

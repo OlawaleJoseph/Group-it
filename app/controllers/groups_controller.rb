@@ -36,7 +36,7 @@ class GroupsController < ApplicationController
 
     else
 
-      flash[:error] = @group.errors.full_messages
+      flash.now[:error] = @group.errors.full_messages
 
       render :new
 
