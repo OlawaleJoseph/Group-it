@@ -6,7 +6,7 @@ RSpec.describe SessionsController, type: :controller do
     it { should render_template('new') }
     it { should_not redirect_to(login_path) }
   end
-  describe "Post #create" do
+  describe 'Post #create' do
     before do
       User.create(username: 'somoye')
       @user = User.find_by(username: 'somoyeddd')

@@ -10,40 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_25_231130) do
-
-  create_table "expense_groups", force: :cascade do |t|
-    t.integer "expense_id", null: false
-    t.integer "group_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["expense_id"], name: "index_expense_groups_on_expense_id"
-    t.index ["group_id"], name: "index_expense_groups_on_group_id"
+ActiveRecord::Schema.define(version: 20_200_825_231_130) do
+  create_table 'expense_groups', force: :cascade do |t|
+    t.integer 'expense_id', null: false
+    t.integer 'group_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['expense_id'], name: 'index_expense_groups_on_expense_id'
+    t.index ['group_id'], name: 'index_expense_groups_on_group_id'
   end
 
-  create_table "expenses", force: :cascade do |t|
-    t.string "name"
-    t.integer "amount"
-    t.integer "author_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["author_id"], name: "index_expenses_on_author_id"
+  create_table 'expenses', force: :cascade do |t|
+    t.string 'name'
+    t.integer 'amount'
+    t.integer 'author_id'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['author_id'], name: 'index_expenses_on_author_id'
   end
 
-  create_table "groups", force: :cascade do |t|
-    t.string "name"
-    t.integer "author_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'groups', force: :cascade do |t|
+    t.string 'name'
+    t.integer 'author_id'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'users', force: :cascade do |t|
+    t.string 'username'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  add_foreign_key "expense_groups", "expenses"
-  add_foreign_key "expense_groups", "groups"
-  add_foreign_key "expenses", "users", column: "author_id"
+  add_foreign_key 'expense_groups', 'expenses'
+  add_foreign_key 'expense_groups', 'groups'
+  add_foreign_key 'expenses', 'users', column: 'author_id'
 end

@@ -9,7 +9,7 @@ RSpec.describe ExpensesController, type: :controller do
       User.create(username: 'somoye')
       session[:author_id] = 1
       get :index
-    end 
+    end
     it { should render_template('index') }
   end
   describe 'GET #external' do
@@ -17,14 +17,14 @@ RSpec.describe ExpensesController, type: :controller do
       User.create(username: 'somoye')
       session[:author_id] = 1
       get :external
-    end 
+    end
     it { should render_template('external') }
   end
   describe 'GET #new' do
     before { get :new }
     it { should redirect_to(login_path) }
   end
-  describe "Post #create" do
+  describe 'Post #create' do
     before do
       User.create(username: 'somoye')
       session[:author_id] = 1
@@ -37,10 +37,9 @@ RSpec.describe ExpensesController, type: :controller do
           group_id: 1
         }
       }
-      should permit(:name, :amount, :group_id).
-        for(:create, params: params).
-        on(:expense)
+      should permit(:name, :amount, :group_id)
+        .for(:create, params: params)
+        .on(:expense)
     end
   end
-  
 end

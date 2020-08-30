@@ -3,11 +3,15 @@ class ExpensesController < ApplicationController
   before_action :require_user
 
   def index
-    @expenses = current_user.expenses.desc.select { |expense| expense.groups.exists? } unless current_user.expenses.size.zero?
+    unless current_user.expenses.size.zero?
+      @expenses = current_user.expenses.desc.select { |expense| expense.groups.exists? }
+    end
   end
 
   def external
-    @expenses = current_user.expenses.desc.reject { |expense| expense.groups.exists? } unless current_user.expenses.size.zero?
+    unless current_user.expenses.size.zero?
+      @expenses = current_user.expenses.desc.reject { |expense| expense.groups.exists? }
+    end
   end
 
   # def show; end
@@ -60,5 +64,4 @@ class ExpensesController < ApplicationController
   def group_params
     params.require(:expense).permit(:group_id)
   end
-
 end

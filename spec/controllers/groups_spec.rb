@@ -10,14 +10,14 @@ RSpec.describe GroupsController, type: :controller do
       User.create(username: 'somoye')
       session[:author_id] = 1
       get :index
-    end 
+    end
     it { should render_template('index') }
   end
   describe 'GET #new' do
     before { get :new }
     it { should redirect_to(login_path) }
   end
-  describe "Post #create" do
+  describe 'Post #create' do
     before do
       User.create(username: 'somoye')
       session[:author_id] = 1
@@ -25,13 +25,12 @@ RSpec.describe GroupsController, type: :controller do
     it do
       params = {
         group: {
-          name: 'Education',
+          name: 'Education'
         }
       }
-      should permit(:name).
-        for(:create, params: params).
-        on(:group)
+      should permit(:name)
+        .for(:create, params: params)
+        .on(:group)
     end
   end
-  
 end

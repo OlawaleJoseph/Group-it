@@ -32,26 +32,25 @@ class GroupsController < ApplicationController
     end
   end
 
-  # def edit; end
+    # def edit; end
 
-  # def update
-  #   if @group.update(group_params)
-  #     flash[:success] = 'Group name was successfully updated'
-  #     redirect_to group_path(@group)
-  #   else
-  #     flash.now[:danger] = 'Group was not updated'
-  #     render 'edit'
-  #   end
-  # end
+    # def update
+    #   if @group.update(group_params)
+    #     flash[:success] = 'Group name was successfully updated'
+    #     redirect_to group_path(@group)
+    #   else
+    #     flash.now[:danger] = 'Group was not updated'
+    #     render 'edit'
+    #   end
+    # end
 
-  private
+    private
 
   def set_group
     @group = Group.find(params[:id])
   end
 
-    def group_params
-      params.require(:group).permit(:name)
-    end
-
+  def group_params
+    params.require(:group).permit(:name)
+  end
   end

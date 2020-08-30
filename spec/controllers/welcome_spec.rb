@@ -9,7 +9,7 @@ RSpec.describe WelcomeController, type: :controller do
       User.create(username: 'somoye')
       session[:author_id] = 1
       get :index
-    end 
+    end
     it { should render_template('index') }
   end
 end

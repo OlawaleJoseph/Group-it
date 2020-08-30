@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-feature "User Story" do
+feature 'User Story' do
   background do
     User.create(username: 'somoye')
     Group.create(name: 'Electronics', author_id: 1)
     Expense.create(name: 'Phone', amount: 500, author_id: 1)
     Expense.create(name: 'Laptop', amount: 2000, author_id: 1)
-    ExpenseGroup.create(expense_id:1, group_id:1)
+    ExpenseGroup.create(expense_id: 1, group_id: 1)
   end
-  
-  scenario "Signing in with correct credentials" do
+
+  scenario 'Signing in with correct credentials' do
     visit '/login'
     fill_in 'Username', with: 'somoye'
     click_button 'Log in'
@@ -25,7 +25,7 @@ feature "User Story" do
     expect(page).to have_current_path('/login')
   end
 
-  scenario "user is presented with a profile page" do
+  scenario 'user is presented with a profile page' do
     visit '/login'
     fill_in 'Username', with: 'somoye'
     click_button 'Log in'
@@ -34,7 +34,7 @@ feature "User Story" do
     expect(page).to have_content 'My External expenses'
   end
 
-  scenario "user opens My Expenses page" do
+  scenario 'user opens My Expenses page' do
     visit '/login'
     fill_in 'Username', with: 'somoye'
     click_button 'Log in'
@@ -44,7 +44,7 @@ feature "User Story" do
     expect(page).to have_content 'ADD NEW EXPENSE'
   end
 
-  scenario "user opens My External expenses page" do
+  scenario 'user opens My External expenses page' do
     visit '/login'
     fill_in 'Username', with: 'somoye'
     click_button 'Log in'
@@ -54,7 +54,7 @@ feature "User Story" do
     expect(page).to have_content 'ADD NEW EXPENSE'
   end
 
-  scenario "user opens My Groups page" do
+  scenario 'user opens My Groups page' do
     visit '/login'
     fill_in 'Username', with: 'somoye'
     click_button 'Log in'
@@ -65,7 +65,7 @@ feature "User Story" do
     expect(page).to have_current_path('/groups/1')
   end
 
-  scenario "user opens Group page" do
+  scenario 'user opens Group page' do
     visit '/login'
     fill_in 'Username', with: 'somoye'
     click_button 'Log in'
@@ -74,8 +74,8 @@ feature "User Story" do
     expect(page).to have_content 'Phone'
     expect(page).to have_content 'somoye'
   end
-  
-  scenario "user opens Create New Group page" do
+
+  scenario 'user opens Create New Group page' do
     visit '/login'
     fill_in 'Username', with: 'somoye'
     click_button 'Log in'
@@ -87,7 +87,7 @@ feature "User Story" do
     expect(page).to have_current_path('/groups')
   end
 
-  scenario "user opens Create New Expense page" do
+  scenario 'user opens Create New Expense page' do
     visit '/login'
     fill_in 'Username', with: 'somoye'
     click_button 'Log in'
