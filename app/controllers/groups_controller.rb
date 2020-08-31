@@ -1,31 +1,19 @@
 class GroupsController < ApplicationController
-
   # before_action :set_group, only: %i[show edit update destroy]
 
   before_action :set_group, only: %i[show]
 
   before_action :require_user
 
-
-
   def index
-
     @groups = current_user.groups.asc unless current_user.groups.size.zero?
-
   end
-
-
 
   def new
-
     @group = Group.new
-
   end
 
-
-
   def create
-
     @group = current_user.groups.build(group_params)
 
     if @group.save
@@ -41,13 +29,9 @@ class GroupsController < ApplicationController
       render :new
 
     end
-
   end
 
-
-
   def show
-
     if current_user.groups.include? @group
 
       @expenses = nil
@@ -61,14 +45,9 @@ class GroupsController < ApplicationController
       redirect_to groups_path
 
     end
-
   end
 
-
-
     # def edit; end
-
-
 
     # def update
 
@@ -88,25 +67,13 @@ class GroupsController < ApplicationController
 
     # end
 
-
-
     private
 
-
-
   def set_group
-
     @group = Group.find(params[:id])
-
   end
-
-
 
   def group_params
-
     params.require(:group).permit(:name, :image)
-
   end
-
   end
-
