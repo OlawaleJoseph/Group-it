@@ -59,7 +59,7 @@ feature 'Creating New groups and expenses' do
   background do
     User.create(username: 'somoye')
   end
-  
+
   scenario 'user opens Create New Group page' do
     visit '/login'
     fill_in 'Username', with: 'somoye'
@@ -84,4 +84,3 @@ feature 'Creating New groups and expenses' do
     expect(page).to have_current_path('/expenses')
   end
 end
-

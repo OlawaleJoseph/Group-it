@@ -3,13 +3,13 @@ class ExpensesController < ApplicationController
 
   def index
     return if current_user.expenses.size.zero?
-    
+
     @expenses = current_user.expenses.desc.select { |expense| expense.groups.exists? }
   end
 
   def external
     return if current_user.expenses.size.zero?
-    
+
     @expenses = current_user.expenses.desc.reject { |expense| expense.groups.exists? }
   end
 
