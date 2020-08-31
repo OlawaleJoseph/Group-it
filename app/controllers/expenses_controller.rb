@@ -1,5 +1,4 @@
 class ExpensesController < ApplicationController
-  # before_action :set_expense, only: %i[show edit update destroy]
   before_action :require_user
 
   def index
@@ -14,14 +13,10 @@ class ExpensesController < ApplicationController
     end
   end
 
-  # def show; end
-
   def new
     @expense = Expense.new
     @groups = current_user.groups
   end
-
-  # def edit; end
 
   def create
     @expense = current_user.expenses.build(expense_params)
@@ -37,25 +32,7 @@ class ExpensesController < ApplicationController
     end
   end
 
-  # def update
-  #   if @expense.update(expense_params)
-  #     flash[:success] = 'Expense updated successfully!'
-  #     redirect_to expenses_path
-  #   else
-  #     flash.now[:danger] = 'expense wasn`t updated'
-  #     render :edit
-  #   end
-  # end
-
-  # def destroy
-  #   @expense.destroy
-  #   redirect_to expenses_path
-  # end
   private
-
-  # def set_expense
-  #   @expense = Expense.find(params[:id])
-  # end
 
   def expense_params
     params.require(:expense).permit(:name, :amount)

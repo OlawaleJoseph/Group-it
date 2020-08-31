@@ -1,6 +1,4 @@
 class GroupsController < ApplicationController
-  # before_action :set_group, only: %i[show edit update destroy]
-
   before_action :set_group, only: %i[show]
 
   before_action :require_user
@@ -46,26 +44,6 @@ class GroupsController < ApplicationController
 
     end
   end
-
-    # def edit; end
-
-    # def update
-
-    #   if @group.update(group_params)
-
-    #     flash[:success] = 'Group name was successfully updated'
-
-    #     redirect_to group_path(@group)
-
-    #   else
-
-    #     flash.now[:danger] = 'Group was not updated'
-
-    #     render 'edit'
-
-    #   end
-
-    # end
 
     private
 
