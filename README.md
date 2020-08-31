@@ -15,33 +15,7 @@
   - Basic Authentication using just username
   - Used RSpec as the test suit with the help of shoulda-matchers and capybara for effective testing. Unit, Functional and integration testing was done.
 
-## Home page
-
-   ![screenshot](./app/assets/images/homepage.PNG)
-
-## Create a user account
-
-   ![screenshot](./app/assets/images/signup.PNG)
-
-## Log in page
-
-   ![screenshot](./app/assets/images/login.PNG)
-
-## Profile page
-
-   ![screenshot](./app/assets/images/profile.PNG)
-
-## Add a new expense
-
-   ![screenshot](./app/assets/images/new_expense.PNG)
-
-## Groups page
-
-   ![screenshot](./app/assets/images/groups.PNG)
-
-## View external expenses
-
-   ![screenshot](./app/assets/images/external.PNG)
+  ![screenshot](./app/assets/images/group-it.png)
 
 ## Built With
   - Ruby,
@@ -53,7 +27,7 @@
 
 ## Live Demo
 
-  - [Live Demo Link](https://serene-tundra-02609.herokuapp.com/)
+  - [Live Demo Link](https://group-it-capstone.herokuapp.com)
 
 ### Prerequisites
 
