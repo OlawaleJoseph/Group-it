@@ -11,6 +11,7 @@ RSpec.describe ExpensesController, type: :controller do
       get :index
     end
     it { should render_template('index') }
+    it { should_not render_template('external') }
   end
   describe 'GET #external' do
     before do
@@ -19,6 +20,7 @@ RSpec.describe ExpensesController, type: :controller do
       get :external
     end
     it { should render_template('external') }
+    it { should_not render_template('index') }
   end
   describe 'GET #new' do
     before { get :new }

@@ -15,6 +15,7 @@ feature 'Accessing Application' do
     click_button 'Log in'
     expect(page).to have_content 'Successfully logged in.'
     expect(page).to have_current_path(root_path)
+    expect(page).to_not have_current_path('/login')
   end
 
   scenario "User can't Sign in with wrong credentials" do
@@ -23,6 +24,7 @@ feature 'Accessing Application' do
     click_button 'Log in'
     expect(page).to have_content 'Error logging in.'
     expect(page).to have_current_path('/login')
+    expect(page).to_not have_current_path(root_path)
   end
 end
 
@@ -42,6 +44,8 @@ feature 'Navigation through the application pages' do
     expect(page).to have_content 'My Groups'
     expect(page).to have_content 'My Expenses'
     expect(page).to have_content 'My External expenses'
+    expect(page).to_not have_content 'log In'
+    expect(page).to_not have_content 'Sign Up'
   end
 
   scenario 'user opens My External expenses page' do
@@ -52,6 +56,7 @@ feature 'Navigation through the application pages' do
     expect(page).to have_content '2000'
     expect(page).to have_content 'Laptop'
     expect(page).to have_content 'ADD NEW EXPENSE'
+    expect(page).to_not have_current_path('/login')
   end
 end
 
@@ -69,6 +74,7 @@ feature 'Creating New groups and expenses' do
     expect(page).to have_current_path('/groups/new')
     expect(page).to have_content 'Create Transactions Group'
     click_button 'CREATE GROUP'
+    expect(page).to_not have_current_path('/login')
     expect(page).to have_current_path('/groups')
   end
 
@@ -82,5 +88,6 @@ feature 'Creating New groups and expenses' do
     expect(page).to have_content 'Create An Expense'
     click_button 'Add new expense'
     expect(page).to have_current_path('/expenses')
+    expect(page).to_not have_current_path('/login')
   end
 end
