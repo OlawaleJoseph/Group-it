@@ -1,25 +1,7 @@
 <% content_for(:title, "All Groups") %>
-<div class="row">
-  <%if @groups%>
-    <% @groups.each do |group| %>
-      <%= link_to(group) do %>
-        <div class="col-sm-12 col-md-6">
-          <div class="row transcation-listing">
-            <div class="col-sm-2">
-              <%if group.image.attached?%>
-                <%= image_tag group.image, class: "group-img" %>
-              <%end%>
-            </div>
-            <div class="col-sm-7 grey-color">
-            <p class="text-secondary h6 m-0 p-0 py-1"><strong>Group Name: </strong><%= group.name %></p>
-            <p class="text-secondary h6 m-0 p-0 py-2"><strong>Created: </strong> <%= group.created_at.day %>-<%= group.created_at.month %>-<%= group.created_at.year %></p>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-  <%end%>
-</div>
+<%= display_groups('list',@groups)  %>
+
 <div class="row add-btn-background">
     <%= link_to 'CREATE A NEW GROUP', new_group_path, :class=>"col-sm-12 text-center add-btn" %>
 </div>
+
