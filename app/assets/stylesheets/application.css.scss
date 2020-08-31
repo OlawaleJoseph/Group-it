@@ -25,9 +25,11 @@ body {
   justify-content: space-between;
   background-color: #fff;
   padding: 1.5rem;
+  
   span:first-child {
     color: $base-color;
   }
+  
   span:last-child {
     font-weight: bold;
   }
@@ -41,6 +43,7 @@ body {
 .grey-color {
   color: $base-color;
 }
+
 .bold {
   font-weight: bold;
 }
@@ -49,6 +52,7 @@ body {
   background-color: $base-color2;
   padding: 1.5rem;
 }
+
 .add-btn {
   border: 1px solid white;
   padding: 1.5rem;
