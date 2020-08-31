@@ -2,15 +2,15 @@ class ExpensesController < ApplicationController
   before_action :require_user
 
   def index
-    unless current_user.expenses.size.zero?
-      @expenses = current_user.expenses.desc.select { |expense| expense.groups.exists? }
-    end
+    return if current_user.expenses.size.zero?
+    
+    @expenses = current_user.expenses.desc.select { |expense| expense.groups.exists? }
   end
 
   def external
-    unless current_user.expenses.size.zero?
-      @expenses = current_user.expenses.desc.reject { |expense| expense.groups.exists? }
-    end
+    return if current_user.expenses.size.zero?
+    
+    @expenses = current_user.expenses.desc.reject { |expense| expense.groups.exists? }
   end
 
   def new

@@ -17,4 +17,4 @@ class SessionsController < ApplicationController
     reset_session
     redirect_to login_path, notice: 'Logged out!'
   end
-  end
+end

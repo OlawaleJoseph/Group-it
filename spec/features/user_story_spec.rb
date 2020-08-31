@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-feature 'User Story' do
+feature 'Accessing Application' do
   background do
     User.create(username: 'somoye')
-    # Group.create(name: 'Electronics', author_id: 1)
+    Group.create(name: 'Electronics', author_id: 1)
     Expense.create(name: 'Phone', amount: 500, author_id: 1)
     Expense.create(name: 'Laptop', amount: 2000, author_id: 1)
     ExpenseGroup.create(expense_id: 1, group_id: 1)
@@ -24,6 +24,16 @@ feature 'User Story' do
     expect(page).to have_content 'Error logging in.'
     expect(page).to have_current_path('/login')
   end
+end
+
+feature 'Navigation through the application pages' do
+  background do
+    User.create(username: 'somoye')
+    Group.create(name: 'Electronics', author_id: 1)
+    Expense.create(name: 'Phone', amount: 500, author_id: 1)
+    Expense.create(name: 'Laptop', amount: 2000, author_id: 1)
+    ExpenseGroup.create(expense_id: 1, group_id: 1)
+  end
 
   scenario 'user is presented with a profile page' do
     visit '/login'
@@ -43,7 +53,13 @@ feature 'User Story' do
     expect(page).to have_content 'Laptop'
     expect(page).to have_content 'ADD NEW EXPENSE'
   end
+end
 
+feature 'Creating New groups and expenses' do
+  background do
+    User.create(username: 'somoye')
+  end
+  
   scenario 'user opens Create New Group page' do
     visit '/login'
     fill_in 'Username', with: 'somoye'
@@ -68,3 +84,4 @@ feature 'User Story' do
     expect(page).to have_current_path('/expenses')
   end
 end
+
